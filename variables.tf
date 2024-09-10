@@ -425,7 +425,7 @@ variable "iam_role_tags" {
 variable "create_wireguard_sg" {
   description = "Create WEB Security group"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "vpc_cidr_block" {
