@@ -1,11 +1,9 @@
 resource "aws_lb" "wireguard" {
-  name               = "${var.project}-${var.env}-webserver-nlb"
+  name               = "${var.project}-${var.env}-wireguard-nlb"
   internal           = false
   load_balancer_type = "network"
   subnets            = [var.subnet_id]
   security_groups    = [aws_security_group.wireguard_nlb_sg.id]
-
-  enable_deletion_protection = true
 }
 
 resource "aws_security_group" "wireguard_nlb_sg" {
