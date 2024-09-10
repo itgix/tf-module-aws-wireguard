@@ -454,13 +454,6 @@ variable "alb_request_idle_timeout" {
   default     = 60
 }
 
-#### NAT GW #####
-
-variable "nat_gateways" {
-  description = "NAT Gateways"
-  default     = ""
-}
-
 #### NLB GS #####
 variable "nlb_sg_id" {
   description = "The security group ID of the NLB"
