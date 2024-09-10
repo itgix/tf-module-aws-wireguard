@@ -2,13 +2,13 @@ resource "aws_lb" "wireguard" {
   name               = "${var.project}-${var.env}-webserver-nlb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = [for subnet in aws_subnet.public : subnet.id]
-  security_groups    = [aws_security_group.wireguard_sg.id]
+  subnets            = [var.subnet_id]
+  security_groups    = [aws_security_group.wireguard_nlb_sg.id]
 
   enable_deletion_protection = true
 }
 
-resource "aws_security_group" "wireguard_sg" {
+resource "aws_security_group" "wireguard_nlb_sg" {
   name        = "${var.project}-${var.env}-nlb-sg"
   description = "Security group for NLB"
   vpc_id      = var.vpc_id
@@ -32,13 +32,13 @@ resource "aws_lb_target_group" "wireguard" {
   health_check {
     healthy_threshold   = "3"
     interval            = "30"
-    protocol            = "UDP"
+    protocol            = "TCP"
     timeout             = "10"
     unhealthy_threshold = "3"
   }
 }
 
-resource "aws_lb_listener" "nlb_listener_10933" {
+resource "aws_lb_listener" "nlb_listener_51820" {
   load_balancer_arn = aws_lb.wireguard.arn
   port              = "51820"
   protocol          = "UDP"
@@ -51,6 +51,6 @@ resource "aws_lb_listener" "nlb_listener_10933" {
 
 resource "aws_lb_target_group_attachment" "wireguard" {
   target_group_arn = aws_lb_target_group.wireguard.arn
-  target_id        = aws_instance.this.id
+  target_id        = aws_instance.this[0].id
   port             = 51820
 }

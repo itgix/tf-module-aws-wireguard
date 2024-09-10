@@ -432,15 +432,6 @@ variable "vpc_cidr_block" {
   description = "CIDR block of the VPC"
   default     = null
 }
-variable "public_subnets" {
-  description = "Public subnets for ALB"
-  default     = null
-}
-
-variable "instance_id" {
-  description = "Instance id for ALB target group"
-  default     = ""
-}
 
 variable "sg_windows_web_id" {
   description = "Security group ID of the Web instance"
@@ -461,13 +452,6 @@ variable "alb_request_idle_timeout" {
   description = "The idle duration for the alb requests, in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360)"
   type        = number
   default     = 60
-}
-
-##### S3 #####
-
-variable "s3_bucket" {
-  description = "The bucket for the ALB logs"
-  default     = ""
 }
 
 #### NAT GW #####

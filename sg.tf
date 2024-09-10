@@ -1,4 +1,4 @@
-resource "aws_security_group" "wireguard" {
+resource "aws_security_group" "wireguard_sg" {
 
   count  = var.create_wireguard_sg ? 1 : 0
   vpc_id = var.vpc_id
