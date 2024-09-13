@@ -238,3 +238,7 @@ output "wireguard" {
     null
   )
 }
+
+output "lb_ip" {
+  value = data.aws_lb.wireguard.dns_name
+}

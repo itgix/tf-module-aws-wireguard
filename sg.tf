@@ -12,11 +12,12 @@ resource "aws_security_group" "wireguard_sg" {
   }
 
   ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
+    from_port = 0
+    to_port   = 0
+    # security_groups = [aws_security_group.wireguard_nlb_sg.id]
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-    self        = false
+
   }
   ingress {
     from_port   = 0

@@ -236,6 +236,13 @@ variable "subnet_id" {
   default     = null
 }
 
+variable "nlb_subnet_id" {
+  description = "The VPC Subnet ID for NLB to launch in"
+  type        = string
+  default     = null
+}
+
+
 variable "tags" {
   description = "A mapping of tags to assign to the resource"
   type        = map(string)
