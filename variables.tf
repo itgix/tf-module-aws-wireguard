@@ -435,11 +435,6 @@ variable "create_wireguard_sg" {
   default     = true
 }
 
-variable "vpc_cidr_block" {
-  description = "CIDR block of the VPC"
-  default     = null
-}
-
 variable "sg_windows_web_id" {
   description = "Security group ID of the Web instance"
   default     = ""

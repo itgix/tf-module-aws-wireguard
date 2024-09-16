@@ -232,7 +232,7 @@ output "ephemeral_block_device" {
 
 ### Security groups ###
 
-output "wireguard" {
+output "wireguard_sg" {
   value = try(
     aws_security_group.wireguard_sg[0].id,
     null
