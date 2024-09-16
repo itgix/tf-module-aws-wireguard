@@ -1,5 +1,5 @@
 resource "aws_lb" "wireguard" {
-  name               = "${var.project}-${var.env}-wireguard-nlb"
+  name               = "${var.project}-wireguard-nlb"
   internal           = false
   load_balancer_type = "network"
   subnets            = [var.nlb_subnet_id]
@@ -7,7 +7,7 @@ resource "aws_lb" "wireguard" {
 }
 
 resource "aws_security_group" "wireguard_nlb_sg" {
-  name        = "${var.project}-${var.env}-nlb-wireguard-sg"
+  name        = "${var.project}-nlb-wireguard-sg"
   description = "Security group for NLB"
   vpc_id      = var.vpc_id
 
@@ -28,7 +28,7 @@ resource "aws_security_group" "wireguard_nlb_sg" {
 }
 
 resource "aws_lb_target_group" "wireguard" {
-  name        = "${var.project}-${var.env}-nlb-tg-wireguard"
+  name        = "${var.project}-nlb-tg-wireguard"
   port        = 51820
   protocol    = "UDP"
   vpc_id      = var.vpc_id
