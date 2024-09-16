@@ -37,7 +37,7 @@ resource "aws_lb_target_group" "wireguard" {
   health_check {
     healthy_threshold   = "3"
     interval            = "30"
-    port                = "22"
+    port                = "443"
     protocol            = "TCP"
     timeout             = "10"
     unhealthy_threshold = "3"

@@ -12,12 +12,19 @@ resource "aws_security_group" "wireguard_sg" {
   }
 
   ingress {
-    from_port = 0
-    to_port   = 0
-    # security_groups = [aws_security_group.wireguard_nlb_sg.id]
+    from_port       = 51820
+    to_port         = 51820
+    security_groups = [aws_security_group.wireguard_nlb_sg.id]
+    protocol        = "-1"
+    description     = "VPN port"
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-
+    description = "SSM and Healthcheck"
   }
   ingress {
     from_port   = 0
